@@ -3,10 +3,8 @@ package edu.vanier.distancecalculator;
 
 import com.opencsv.exceptions.CsvValidationException;
 import edu.vanier.distancecalculator.controllers.PostalCodeController;
-import edu.vanier.distancecalculator.models.PostalCode;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Map;
 
 /**
  * This is a JavaFX project template to be used for creating GUI applications.
@@ -18,7 +16,7 @@ import java.util.Map;
 public class MainApp {
 
     public static void main(String[] args) throws IOException, FileNotFoundException, CsvValidationException {
-        System.out.println("Hello there!");
+        System.out.println("Hello there friend!");
         PostalCodeController PCC = new PostalCodeController(("/CSV/zipcodes.csv"));
         // PCC.nearbylocations("V0N")
         System.out.println(PCC.distanceTo("H4L", "H4T"));
@@ -26,9 +24,7 @@ public class MainApp {
 //            Object key = en.getKey();
 //            Object value = en.getValue();
 //            System.out.println(key);
-            
-        }
 
     }
 
-
+}
