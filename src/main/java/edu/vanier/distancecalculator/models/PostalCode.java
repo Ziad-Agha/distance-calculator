@@ -5,81 +5,85 @@
 
 package edu.vanier.distancecalculator.models;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 /**
  *
- * @author ziadagha
+ * @author ziadagha Here is the class that represents each postal code.
+ * information for each postal code can be stores in instances of each class.
  */
 public class PostalCode {
 
-    private String id;
+    private SimpleStringProperty id;
 
-    private String country;
+    private SimpleStringProperty country;
 
-    private String postalCode;
-    
-    private String city;
+    private SimpleStringProperty postalCode;
 
-    private String province;
+    private SimpleStringProperty city;
 
-    private double latitude;
+    private SimpleStringProperty province;
 
-    private double longitude;
+    private SimpleDoubleProperty latitude;
+
+    private SimpleDoubleProperty longitude;
 
     public String getCity() {
-        return city;
+        return city.get();
     }
 
     public void setCity(String city) {
-        this.city = city;
+        this.city = new SimpleStringProperty(city);
     }
-    
 
     public String getId() {
-        return id;
+        return id.get();
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.id = new SimpleStringProperty(id);
+
     }
 
     public String getCountry() {
-        return country;
+        return country.get();
     }
 
     public void setCountry(String country) {
-        this.country = country;
+        this.country = new SimpleStringProperty(country);
     }
 
     public String getPostalCode() {
-        return postalCode;
+        return postalCode.get();
     }
 
     public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+        this.postalCode = new SimpleStringProperty(postalCode);
     }
 
     public String getProvince() {
-        return province;
+        return province.get();
     }
 
     public void setProvince(String province) {
-        this.province = province;
+        this.province = new SimpleStringProperty(province);
     }
 
     public double getLatitude() {
-        return latitude;
+        return latitude.get();
     }
 
     public void setLatitude(double latitude) {
-        this.latitude = latitude;
+        this.latitude = new SimpleDoubleProperty(latitude);
     }
 
     public double getLongitude() {
-        return longitude;
+        return longitude.get();
     }
 
     public void setLongitude(double longitude) {
-        this.longitude = longitude;
+        this.longitude = new SimpleDoubleProperty(longitude);
     }
 
 }
