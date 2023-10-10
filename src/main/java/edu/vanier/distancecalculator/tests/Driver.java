@@ -18,32 +18,57 @@ import java.util.Map;
  * @author ziadagha
  */
 public class Driver {
-   private PostalCodeController PCC = new PostalCodeController("/CSV/zipcodes.csv");
-    
-    public static void main(String[] args) {
-        
-        
-        
+
+    private static PostalCodeController PCC = new PostalCodeController("/CSV/zipcodes.csv");
+
+    public static void main(String[] args) throws IOException, FileNotFoundException, CsvValidationException {
+
+        testParse();
+        testDistanceTo("H4T", "H4L");
+        testNearbyLocations("H4L", 100);
+
     }
-    public void testParse(String filePath) throws IOException, FileNotFoundException, CsvValidationException{
-        HashMap<String,PostalCode> test = PCC.parse();
-        
+
+    public static void testParse() throws IOException, FileNotFoundException, CsvValidationException {
+        HashMap<String, PostalCode> test = PCC.parse();
+
         for (Map.Entry<String, PostalCode> entry : test.entrySet()) {
-            Object key = entry.getKey();
-            Object val = entry.getValue();
-            
+            String key = entry.getKey();
+            PostalCode val = entry.getValue();
+
+            if (key != val.getPostalCode() || key.length() != 3 || val.getPostalCode().length() != 3) {
+                System.out.println("false");
+                return;
+            }
+            System.out.println("true");
+            return;
+
         }
-        
-        
+
     }
-    
-    public void testDistanceTo(String From){
-        
+
+    public static void testDistanceTo(String From, String To) throws IOException, FileNotFoundException, CsvValidationException {
+        double d = PCC.distanceTo(From, To);
+
+        System.out.println(d);
+
     }
-    
-    public void testNearbyLocations(String From){
-        
-        
+
+    public static void testNearbyLocations(String From, double distance) throws IOException, FileNotFoundException, CsvValidationException {
+
+        HashMap<String, PostalCode> test = PCC.nearbylocations(From, distance);
+        for (Map.Entry<String, PostalCode> entry : test.entrySet()) {
+            String key = entry.getKey();
+            PostalCode val = entry.getValue();
+
+            if (!(key.equals(val.getPostalCode()))) {
+                System.out.println(key + " " + val.getPostalCode());
+                return;
+            }
+            System.out.println("true");
+            return;
+        }
+
     }
 
 }
